@@ -9,7 +9,7 @@ Sometimes rebuilding the tutorial project can be very easy and fast by simply co
 | Data sheets                                                  | URL                                                          |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | [ESP01S](Data sheets/esp-01s_product_specification_zh_v1.0.pdf) | [ESP8266文档中心](https://docs.ai-thinker.com/esp8266/docs)  |
-| [UNO](Data sheets\Pinout-UNOrev3_latest.pdf)                 | [ARDUINO UNO REV3](https://store.arduino.cc/usa/arduino-uno-rev3) |
+| [UNO](Data sheets/Pinout-UNOrev3_latest.pdf)                 | [ARDUINO UNO REV3](https://store.arduino.cc/usa/arduino-uno-rev3) |
 |                                                              |                                                              |
 |                                                              |                                                              |
 
