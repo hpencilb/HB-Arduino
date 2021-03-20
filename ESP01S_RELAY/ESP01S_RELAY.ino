@@ -54,8 +54,8 @@ static uint32_t next_heap_millis = 0;
 void cha_switch_on_setter(const homekit_value_t value) {
 	bool on = value.bool_value;
 	cha_switch_on.value.bool_value = on;	//sync the value
-	LOG_D("Switch: %s", on ? "ON" : "OFF");
-	digitalWrite(PIN_SWITCH, on ? LOW : HIGH);
+	LOG_D("Switch: %s", on ? "OFF" : "ON");
+	digitalWrite(PIN_SWITCH, on ? HIGH : LOW);
 }
 
 void my_homekit_setup() {

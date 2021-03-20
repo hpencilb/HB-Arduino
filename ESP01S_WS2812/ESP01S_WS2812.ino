@@ -24,7 +24,7 @@
 #define LOG_D(fmt, ...)   printf_P(PSTR(fmt "\n") , ##__VA_ARGS__);
 
 #define NEOPIN          2
-#define NUMPIXELS       5
+#define NUMPIXELS       60
 Adafruit_NeoPixel pixels = Adafruit_NeoPixel(NUMPIXELS, NEOPIN, NEO_GRB + NEO_KHZ800);
 
 bool received_sat = false;
