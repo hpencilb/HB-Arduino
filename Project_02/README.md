@@ -35,5 +35,5 @@
 
 在 Home APP 里转圈圈调整颜色的效果：
 
-<iframe src="//player.bilibili.com/player.html?aid=972326651&bvid=BV1Xp4y1b7Zq&cid=315604145&page=1&high_quality=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" width="1600px" height="900px"> </iframe>
+[![image-20210326231748296](.assets/image-20210326231748296.png)](https://www.bilibili.com/video/BV1Xp4y1b7Zq)
 
