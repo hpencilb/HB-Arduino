@@ -18,7 +18,7 @@
 #include <Arduino.h>
 #include <arduino_homekit_server.h>
 #include <Adafruit_NeoPixel.h>
-#include "wifi_info.h"
+#include <WiFiManager.h>
 
 #define LOG_D(fmt, ...) printf_P(PSTR(fmt "\n"), ##__VA_ARGS__);
 
@@ -38,7 +38,15 @@ int rgb_colors[3];
 void setup()
 {
     Serial.begin(115200);
-    wifi_connect(); // in wifi_info.h
+    WiFi.mode(WIFI_STA);
+    WiFiManager wm;
+    bool res;
+    res = wm.autoConnect("AutoConnectAP","password"); // password protected ap
+
+    if(!res) {
+        Serial.println("Failed to connect");
+        ESP.restart();
+    } 
 
     pixels.begin();
     for (int i = 0; i < NUMPIXELS; i++)
