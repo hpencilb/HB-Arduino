@@ -6,6 +6,7 @@
 #include "wifi_info.h"
 
 #define LOG_D(fmt, ...) printf_P(PSTR(fmt "\n"), ##__VA_ARGS__)
+#define servo_pin 2
 
 WiFiUDP ntpUDP;
 NTPClient timeClient(ntpUDP, "ntp.aliyun.com", 8 * 3600, 60000);
@@ -13,6 +14,7 @@ Servo myservo;
 
 void setup()
 {
+    myservo.attach(servo_pin, 500, 2500); // I have a SG90, have to attach like this
     Serial.begin(115200);
     wifi_connect(); // in wifi_info.h
     //homekit_storage_reset(); // to remove the previous HomeKit pairing storage when you first run this new HomeKit example
@@ -39,8 +41,6 @@ bool timer_set_off = false;
 bool timer_is_on = true;
 bool manual_is_on = false;
 
-#define servo_pin 2
-
 //Called when the switch value is changed by iOS Home APP
 void cha_manual_on_setter(const homekit_value_t value)
 {
@@ -48,10 +48,11 @@ void cha_manual_on_setter(const homekit_value_t value)
     cha_manual_on.value.bool_value = on; //sync the value
     LOG_D("manual: %s", on ? "ON" : "OFF");
     if (on)
+    {
         set_off();
-        delay(500);
         cha_manual_on.value.bool_value = !on;
         homekit_characteristic_notify(&cha_manual_on, cha_manual_on.value);
+    }
 }
 
 void cha_timer_on_setter(const homekit_value_t value)
@@ -60,12 +61,11 @@ void cha_timer_on_setter(const homekit_value_t value)
     cha_timer_on.value.bool_value = on; //sync the value
     LOG_D("timer: %s", on ? "ON" : "OFF");
     timer_is_on = on;
-
 }
 
 void my_homekit_setup()
 {
-    myservo.attach(servo_pin);
+
     timeClient.begin();
 
     cha_manual_on.setter = cha_manual_on_setter;
@@ -106,7 +106,6 @@ void my_homekit_loop()
             LOG_D("Not time yet");
         }
     }
-
 }
 
 int calibrate(int raw)
