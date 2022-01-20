@@ -136,7 +136,7 @@ void updateColor()
     if (is_on)
     {
         Serial.println("Update color");
-        int v = map(current_brightness, 0, 100, 0, 255);
+        int v = map(current_brightness, 0, 100, 100, 255);
         if (received_hue && received_sat)
         {
             h = map(current_hue, 0, 360, 0, 255);
